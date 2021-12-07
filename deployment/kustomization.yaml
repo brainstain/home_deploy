@@ -6,3 +6,4 @@ resources:
 - argo-applications/argo-snmp-config.yaml
 - argo-applications/argo-snmp-exporter.yaml
 - argo-applications/argo-unpoller.yaml
+- argo-applications/argo-prometheus.yaml
