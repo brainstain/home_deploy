@@ -3,10 +3,10 @@ kind: ServiceMonitor
 metadata:
   name: unpoller-metrics-servicemonitor
   # Change this to the namespace the Prometheus instance is running in
-  namespace: home
+  namespace: monitor
   labels:
     app: unpoller
-    release: home
+    release: prometheus
 spec:
   namespaceSelector:
     matchNames:

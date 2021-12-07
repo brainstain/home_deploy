@@ -2,9 +2,9 @@ apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   labels:
-    release: home
+    release: prometheus
   name: snmp-exporter-prometheus-snmp-exporter
-  namespace: home
+  namespace: monitor
 spec:
   endpoints:
     - honorLabels: true
