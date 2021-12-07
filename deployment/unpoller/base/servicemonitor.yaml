@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: unpoller-metrics-servicemonitor
+  # Change this to the namespace the Prometheus instance is running in
+  namespace: home
+  labels:
+    app: unpoller
+    release: home
+spec:
+  namespaceSelector:
+    matchNames:
+    - monitor
+  selector:
+    matchLabels:
+      app: unpoller # target gitlab service
+  endpoints:
+  - port: http-metrics
+    interval: 15s
+    path: /metrics

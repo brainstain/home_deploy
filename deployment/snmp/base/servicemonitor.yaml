@@ -1,0 +1,30 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    release: home
+  name: snmp-exporter-prometheus-snmp-exporter
+  namespace: home
+spec:
+  endpoints:
+    - honorLabels: true
+      interval: 2m
+      params:
+        module:
+          - synology
+        target:
+          - 192.168.13.12
+      path: /snmp
+      port: http
+      relabelings:
+        - sourceLabels:
+            - __param_target
+          targetLabel: instance
+      scrapeTimeout: 1m
+  namespaceSelector:
+    matchNames:
+    - monitor
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: snmp-exporter
+      app.kubernetes.io/name: prometheus-snmp-exporter

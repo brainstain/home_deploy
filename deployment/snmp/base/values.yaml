@@ -1,0 +1,12 @@
+#  helm upgrade --install snmp-exporter prometheus-community/prometheus-snmp-exporter -n monitor -f values.yaml
+# https://github.com/prometheus-community/helm-charts
+serviceMonitor:
+  enabled: false
+extraArgs: 
+  - "--config.file=/run/secrets/snmp-exporter/snmp.yml"
+extraConfigmapMounts: 
+   - name: snmp-exporter-configmap
+     mountPath: /run/secrets/snmp-exporter
+     configMap: snmp-exporter-configmap
+     readOnly: true
+     defaultMode: 420

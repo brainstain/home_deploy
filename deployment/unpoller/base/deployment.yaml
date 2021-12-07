@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: unpoller
+  labels:
+    app: unpoller
+spec:
+  type: ClusterIP
+  selector:
+    app: unpoller
+  ports:
+    - name: http-metrics 
+      protocol: TCP
+      port: 9130
+      targetPort: 9130
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: unpoller
+  labels:
+    app: unpoller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: unpoller
+  template: 
+    metadata:
+      labels:
+        app: unpoller
+      annotations:
+        # The field we'll use to couple our ConfigMap and Deployment
+        configHash: "version.123457"
+    spec:
+      containers:
+        - name: unpoller
+          image: golift/unifi-poller:latest
+          imagePullPolicy: IfNotPresent
+          ports: 
+            - containerPort: 9130
+              name: http-metrics
+          env:
+            - name: UP_UNIFI_DEFAULT_URL
+              value: "https://192.168.1.1:443"
+            - name: UP_UNIFI_DEFAULT_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: unifi-creds
+                  key: password
+            - name: UP_POLLER_DEBUG
+              value: "true"
+            - name: UP_INFLUXDB_DISABLE
+              value: "true"
