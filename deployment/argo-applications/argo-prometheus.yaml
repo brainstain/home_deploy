@@ -87,6 +87,10 @@ spec:
         value: pod_name
       - name: kubelet.serviceMonitor.cAdvisorMetricRelabelings[1].action
         value: replace
+      - name: prometheus.prometheusSpec.scrapeInterval
+        value: 60s
+      - name: prometheus.prometheusSpec.retention
+        value: 60d
   destination:
     server: https://kubernetes.default.svc
     namespace: monitor
