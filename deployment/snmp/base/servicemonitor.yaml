@@ -8,7 +8,6 @@ metadata:
 spec:
   endpoints:
     - honorLabels: true
-      interval: 2m
       params:
         module:
           - synology
