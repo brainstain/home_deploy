@@ -29,8 +29,14 @@ spec:
         value: http://loki:3100
       - name: grafana.additionalDataSources[0].version
         value: "1"
-      - name: grafana.plugins[0]  #TODO
+      - name: grafana.plugins[0] 
         value: vonage-status-panel
+      - name: grafana.plugins[1] 
+        value: grafana-clock-panel
+      - name: grafana.plugins[2] 
+        value: natel-discrete-panel
+      - name: grafana.plugins[3] 
+        value: grafana-piechart-panel
       - name: grafana.sidecar.dashboards.provider.foldersFromFilesStructure
         value: "true"
       - name: grafana.sidecar.dashboards.folderAnnotation
