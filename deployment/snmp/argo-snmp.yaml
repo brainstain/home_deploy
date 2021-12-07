@@ -1,0 +1,57 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: snmp-config
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/brainstain/home_deploy.git
+    targetRevision: HEAD
+    path: deployment/snmp/base
+    kustomize:
+      version: v4.0.5
+  destination:
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: snmp-exporter
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 0.1.5
+    chart: prometheus-snmp-exporter
+    helm:
+      parameters: 
+        - name: serviceMonitor.enabled
+          value: "false"
+        - name: extraArgs[0]
+          value: "--config.file=/run/secrets/snmp-exporter/snmp.yml"
+        - name: extraConfigmapMounts[0].name
+          value: snmp-exporter-configmap
+        - name: extraConfigmapMounts[0].mountPath
+          value: /run/secrets/snmp-exporter
+        - name: extraConfigmapMounts[0].configMap
+          value: snmp-exporter-configmap
+        - name: extraConfigmapMounts[0].readOnly
+          value: "true"
+        - name: extraConfigmapMounts[0].defaultMode
+          value: 420
+        
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: monitor
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

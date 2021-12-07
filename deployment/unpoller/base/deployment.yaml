@@ -30,8 +30,7 @@ spec:
       labels:
         app: unpoller
       annotations:
-        # The field we'll use to couple our ConfigMap and Deployment
-        configHash: "version.123457"
+        configHash: "2"
     spec:
       containers:
         - name: unpoller
