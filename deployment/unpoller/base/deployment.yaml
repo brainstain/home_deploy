@@ -1,6 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
+  namespace: monitor
   name: unpoller
   labels:
     app: unpoller
@@ -17,6 +18,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  namespace: monitor
   name: unpoller
   labels:
     app: unpoller
