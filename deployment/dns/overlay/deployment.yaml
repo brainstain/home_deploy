@@ -10,10 +10,8 @@ spec:
   template: 
     metadata:
       annotations:
-        configHash: "version.123457"
+        configHash: "3q4fds"
     spec:
-      nodeSelector:
-        kubernetes.io/arch: arm64
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:
