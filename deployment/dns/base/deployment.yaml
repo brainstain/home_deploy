@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dnsmasq
+  labels:
+    app: dnsmasq
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dnsmasq
+  template: 
+    metadata:
+      labels:
+        app: dnsmasq s
+    spec:
+      containers:
+        - name: dnsmasq
+          image: brianbrainstein/dnsmasq 
+          imagePullPolicy: Always
+          ports: 
+            - containerPort: 53
+            - containerPort: 8080
+          command: ["webproc"]
+          args: ["--", "dnsmasq", "-d", "--user=appuser","--group=appgroup"]
+          volumeMounts:
+            - name: pvc-dns
+              mountPath: /etc/dnsmasq.conf
+              subPath: config
+            - name: pvc-dns-hosts
+              mountPath: /etc/hosts
+              subPath: hosts
+      volumes:
+        - name: pvc-dns
+          configMap:
+            name: dns-config
+            defaultMode: 0755
+            items: 
+              - key: config
+                path: config
+        - name: pvc-dns-hosts
+          configMap:
+            name: dns-config
+            defaultMode: 0755
+            items:
+              - key: hosts
+                path: hosts

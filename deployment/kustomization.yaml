@@ -8,3 +8,4 @@ resources:
 - argo-applications/argo-unpoller.yaml
 - argo-applications/argo-prometheus.yaml
 - argo-applications/argo-monitoring.yaml
+- argo-applications/argo-dns.yaml

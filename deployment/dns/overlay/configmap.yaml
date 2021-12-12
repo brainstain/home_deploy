@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dns-config
+  namespace: home
+data:
+  config: |-
+    #use OpenDNS servers
+    server=208.67.222.222
+    server=208.67.220.220
+    log-queries
+    #don't use hosts nameservers
+    no-resolv
+    domain-needed
+    bogus-priv
+    address=/gold.home/192.168.13.30
+    address=/mqtt.gold.home/192.168.13.33
+    address=/michaelgoldstein.co/192.168.13.30
+  hosts: |
+    127.0.0.1 localhost
+    192.168.13.12 syn.michaelgoldstein.co syn
+    192.168.13.12 s3.michaelgoldstein.co s3
+    192.168.13.14 ha.michaelgoldstein.co ha
+    192.168.1.126 ba.michaelgoldstein.co ba
+    34.149.204.72 michaelgoldstein.co

@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dnsmasq
+  namespace: home
+  labels:
+    app: dnsmasq
+spec:
+  replicas: 2
+  template: 
+    metadata:
+      annotations:
+        configHash: "version.123457"
+    spec:
+      nodeSelector:
+        kubernetes.io/arch: arm64
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                    - dnsmasq
+                topologyKey: "kubernetes.io/hostname"
+      
