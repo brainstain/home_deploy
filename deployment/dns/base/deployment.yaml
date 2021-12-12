@@ -13,7 +13,7 @@ spec:
   template: 
     metadata:
       labels:
-        app: dnsmasq s
+        app: dnsmasq
     spec:
       containers:
         - name: dnsmasq
