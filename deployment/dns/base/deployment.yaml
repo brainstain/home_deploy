@@ -17,13 +17,13 @@ spec:
     spec:
       containers:
         - name: dnsmasq
-          image: brianbrainstein/dnsmasq 
+          image: ghcr.io/brainstain/docker-dnsmasq:master
           imagePullPolicy: Always
           ports: 
             - containerPort: 53
             - containerPort: 8080
-          command: ["webproc"]
-          args: ["--", "dnsmasq", "-d", "--user=appuser","--group=appgroup"]
+          command: ["dnsmasq"]
+          args: ["-d"]
           volumeMounts:
             - name: pvc-dns
               mountPath: /etc/dnsmasq.conf
