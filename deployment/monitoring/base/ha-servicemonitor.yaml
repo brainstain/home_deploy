@@ -14,7 +14,7 @@ spec:
     scheme: https
     tlsConfig:
       insecureSkipVerify: true
-    targetPort: 443
+    port: https
     relabelings:
       - sourceLabels: [__address__]
         targetLabel: __address__
