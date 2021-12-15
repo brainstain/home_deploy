@@ -11,19 +11,43 @@ spec:
       key: token
       name: ha-token
     path: /api/prometheus
-    port: https
+    scheme: https
+    tlsConfig:
+      insecureSkipVerify: true
+    targetPort: 443
+    relabelings:
+      - sourceLabels: [__address__]
+        targetLabel: __address__
+        regex: (.*)
+        replacement: "$FQDN:$PORT"
+        action: replace
   namespaceSelector:
     matchNames:
     - monitor
   selector:
     matchLabels:
-      app.kubernetes.io/name: ha-service
+      app: ha-service
 ---
 kind: Service
 apiVersion: v1
 metadata:
   name: ha-service
   namespace: monitor
+labels:
+  app: ha-service
 spec:
   type: ExternalName
   externalName: ha.michaelgoldstein.co
+---
+kind: Endpoints
+apiVersion: v1
+metadata:
+  name: ha-service
+  namespace: monitor
+subsets:
+  - addresses:
+    - ip: 192.168.13.14
+    ports:
+    - name: https
+      port: 443
+      protocol: TCP
