@@ -5,3 +5,5 @@ resources:
 - grafana-ingress.yaml
 - traefik-ingress.yaml
 - certificate.yaml
+- ha-servicemonitor.yaml
+- ha-token-secret.yaml

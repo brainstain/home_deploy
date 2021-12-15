@@ -1,0 +1,29 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    release: prometheus
+  name: ha-metrics
+  namespace: monitor
+spec:
+  endpoints:
+  - bearerTokenSecret:
+      key: token
+      name: ha-token
+    path: /api/prometheus
+    port: https
+  namespaceSelector:
+    matchNames:
+    - monitor
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ha-service
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ha-service
+  namespace: monitor
+spec:
+  type: ExternalName
+  externalName: ha.michaelgoldstein.co
