@@ -19,7 +19,7 @@ spec:
       - sourceLabels: [__address__]
         targetLabel: __address__
         regex: (.*)
-        replacement: "$FQDN:$PORT"
+        replacement: "ha.michaelgoldstein.co:443"
         action: replace
   namespaceSelector:
     matchNames:
