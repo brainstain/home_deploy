@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: metallb
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 2.3.0
+    chart: metallb
+    helm:
+      parameters: 
+        - name: configInline.address-pools[0].name
+          value: "generic-cluster-pool"
+        - name: configInline.address-pools[0].protocol
+          value: "layer2"
+        - name: configInline.address-pools[0].addresses[0]
+          value: "192.168.13.30-192.168.13.60"
+        - name: controller.image.repository
+          value: "metallb/controller"
+        - name: controller.image.tag
+          value: "v0.9.5"
+        - name: speaker.image.repository
+          value: "metallb/speaker"
+        - name: speaker.image.tag
+          value: "v0.9.5"
+        
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: home
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true

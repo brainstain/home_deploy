@@ -9,3 +9,4 @@ resources:
 - argo-applications/argo-prometheus.yaml
 - argo-applications/argo-monitoring.yaml
 - argo-applications/argo-dns.yaml
+- argo-applications/argo-metallb.yaml
