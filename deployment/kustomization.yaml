@@ -10,3 +10,4 @@ resources:
 - argo-applications/argo-monitoring.yaml
 - argo-applications/argo-dns.yaml
 - argo-applications/argo-metallb.yaml
+- argo-applications/argo-katib.yaml
