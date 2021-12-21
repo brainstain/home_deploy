@@ -16,9 +16,6 @@ images:
     newName: docker.io/kubeflowkatib/katib-ui
     newTag: v0.12.0
 
-patchesStrategicMerge:
-  - removeVirtualService.yaml 
-
 patches:
 - path: statefulSetSelectorPatch.yaml
   target:
