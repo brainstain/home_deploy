@@ -26,3 +26,13 @@ patches:
 
 configurations:
   - sealed-secret-config.yaml
+
+secretGenerator:
+  - name: katib-mysql-secrets
+    behavior: replace 
+    type: Opaque
+
+generatorOptions:
+  annotations:
+    sealedsecrets.bitnami.com/managed: "true"
+    sealedsecrets.bitnami.com/namespace-wide: "true"
