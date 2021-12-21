@@ -24,3 +24,5 @@ patches:
   target:
     kind: Deployment
 
+configurations:
+  - sealed-secret-config.yaml
