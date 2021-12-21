@@ -23,6 +23,9 @@ patches:
 - path: deploymentSelectorPatch.yaml
   target:
     kind: Deployment
+- path: job-selector-patch.yaml
+  target:
+    kind: Job
 
 configurations:
   - sealed-secret-config.yaml
