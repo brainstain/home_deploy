@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/brainstain/home_deploy.git
     targetRevision: HEAD
-    path: deployment/katib
+    path: deployment/kubeflow/katib
     kustomize:
       version: v4.0.5
   destination:
