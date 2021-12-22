@@ -2,22 +2,22 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-- github.com/kubeflow/katib/manifests/v1beta1/installs/katib-external-db?ref=2a11c35116d63d1bc57715671176ffc854279533 
+- github.com/kubeflow/katib/manifests/v1beta1/installs/katib-external-db?ref=2a0b12eba755e4a47fa9d96e3102f31d5a25eebe 
 - katib-mysql-secrets.yaml 
 
 images:
   - name: docker.io/kubeflowkatib/katib-controller
     newName: docker.io/kubeflowkatib/katib-controller
-    newTag: v1beta1-2a11c35
+    newTag: v1beta1-2a0b12e
   - name: docker.io/kubeflowkatib/katib-db-manager
     newName: docker.io/kubeflowkatib/katib-db-manager
-    newTag: v1beta1-2a11c35
+    newTag: v1beta1-2a0b12e
   - name: docker.io/kubeflowkatib/katib-ui
     newName: docker.io/kubeflowkatib/katib-ui
-    newTag: v1beta1-2a11c35
+    newTag: v1beta1-2a0b12e
   - name: docker.io/kubeflowkatib/cert-generator
     newName: docker.io/kubeflowkatib/cert-generator
-    newTag: v1beta1-2a11c35
+    newTag: v1beta1-2a0b12e
 
 patches:
 - path: statefulSetSelectorPatch.yaml
