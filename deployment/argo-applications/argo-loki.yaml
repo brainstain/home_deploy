@@ -27,11 +27,17 @@ spec:
         value: "Exists"
       - name: loki.tolerations[0].effect
         value: "PreferNoSchedule"
-      - name: promtail.tolerations[3].key
-        value: "arm64"
-      - name: promtail.tolerations[3].operator
+      - name: promtail.tolerations[0].key
+        value: "node-role.kubernetes.io/master"
+      - name: promtail.tolerations[0].operator
         value: "Exists"
-      - name: promtail.tolerations[3].effect
+      - name: promtail.tolerations[0].effect
+        value: "NoSchedule"
+      - name: promtail.tolerations[1].key
+        value: "arm64"
+      - name: promtail.tolerations[1].operator
+        value: "Exists"
+      - name: promtail.tolerations[1].effect
         value: "PreferNoSchedule"
   destination:
     server: https://kubernetes.default.svc
