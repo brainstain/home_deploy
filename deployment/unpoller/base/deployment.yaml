@@ -34,6 +34,10 @@ spec:
       annotations:
         configHash: "3"
     spec:
+      tolerations:
+      - key: "arm64"
+        operator: "Exists"
+        effect: "PreferNoSchedule"
       containers:
         - name: unpoller
           image: golift/unifi-poller:latest

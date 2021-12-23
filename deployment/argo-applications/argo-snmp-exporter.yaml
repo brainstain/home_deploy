@@ -25,7 +25,12 @@ spec:
           value: "true"
         - name: extraConfigmapMounts[0].defaultMode
           value: "420"
-        
+        - name: tolerations[3].key
+          value: "arm64"
+        - name: tolerations[3].operator
+          value: "Exists"
+        - name: tolerations[3].effect
+          value: "PreferNoSchedule"       
   destination:
     server: https://kubernetes.default.svc
     namespace: monitor

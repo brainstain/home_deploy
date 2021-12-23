@@ -12,6 +12,10 @@ spec:
       annotations:
         configHash: "3q4fds"
     spec:
+      tolerations:
+      - key: "arm64"
+        operator: "Exists"
+        effect: "PreferNoSchedule"
       affinity:
         podAntiAffinity:
           preferredDuringSchedulingIgnoredDuringExecution:

@@ -91,6 +91,24 @@ spec:
         value: 60s
       - name: prometheus.prometheusSpec.retention
         value: 60d
+      - name: prometheus.prometheusSpec.tolerations[0].key
+        value: "arm64"
+      - name: prometheus.prometheusSpec.tolerations[0].operator
+        value: "Exists"
+      - name: prometheus.prometheusSpec.tolerations[0].effect
+        value: "PreferNoSchedule"
+      - name: prometheusOperator.tolerations[0].key
+        value: "arm64"
+      - name: prometheusOperator.tolerations[0].operator
+        value: "Exists"
+      - name: prometheusOperator.tolerations[0].effect
+        value: "PreferNoSchedule"
+      - name: alertmanager.alertmanagerSpec.tolerations[0].key
+        value: "arm64"
+      - name: alertmanager.alertmanagerSpec.tolerations[0].operator
+        value: "Exists"
+      - name: alertmanager.alertmanagerSpec.tolerations[0].effect
+        value: "PreferNoSchedule"
   destination:
     server: https://kubernetes.default.svc
     namespace: monitor

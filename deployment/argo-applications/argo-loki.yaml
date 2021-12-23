@@ -21,6 +21,18 @@ spec:
         value: "true"
       - name: loki.config.table_manager.retention_period
         value: 168h
+      - name: loki.tolerations[0].key
+        value: "arm64"
+      - name: loki.tolerations[0].operator
+        value: "Exists"
+      - name: loki.tolerations[0].effect
+        value: "PreferNoSchedule"
+      - name: promtail.tolerations[3].key
+        value: "arm64"
+      - name: promtail.tolerations[3].operator
+        value: "Exists"
+      - name: promtail.tolerations[3].effect
+        value: "PreferNoSchedule"
   destination:
     server: https://kubernetes.default.svc
     namespace: monitor
