@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: argo-https
+  namespace: argocd
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`argo.michaelgoldstein.co`)
+      services:
+        - name: argocd-server
+          port: 443
+  tls:
+    secretName: letsencrypt-prod-cert

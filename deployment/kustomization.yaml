@@ -11,3 +11,5 @@ resources:
 - argo-applications/argo-dns.yaml
 - argo-applications/argo-metallb.yaml
 - argo-applications/argo-katib.yaml
+- argo-applications/argo-extraingress.yaml
+# - argo-applications/argocd.yaml
