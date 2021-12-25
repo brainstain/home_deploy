@@ -6,7 +6,7 @@ resources:
 - profile-ingress.yaml 
 
 patchesStrategicMerge:
-  - patch-admin.yaml
+  # - patch-admin.yaml
   - remove-namespace.yaml
   - service.yaml 
 vars:
