@@ -16,4 +16,5 @@ resources:
 - argo-applications/argo-kubeflow-namespace.yaml
 - argo-applications/argo-kubeflow-profiles.yaml
 - argo-applications/argo-kubeflow-roles.yaml
+- argo-applications/argo-kubeflow-profile-controller.yaml 
 # - argo-applications/argocd.yaml
