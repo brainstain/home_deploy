@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: jupyter-https
+  namespace: kubeflow
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`kubeflow.michaelgoldstein.co`) && (PathPrefix(`/jupyter/`))
+      services:
+        - name: jupyter-web-app-service
+          port: 80
+  tls:
+    secretName: letsencrypt-prod-cert
+# may need to add in header x-forwarded-prefix: /jupyter
