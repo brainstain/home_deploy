@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kube-dash-https
+  namespace: kubeflow
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`kubeflow.michaelgoldstein.co`)
+      services:
+        - name: centraldashboard
+          port: 80
+  tls:
+    secretName: letsencrypt-prod-cert
