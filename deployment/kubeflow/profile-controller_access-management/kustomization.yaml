@@ -4,11 +4,11 @@ namespace: kubeflow
 resources:
 - github.com/kubeflow/kubeflow/components/profile-controller/config/overlays/standalone?ref=07112341a4e06aa05890b7ba2348129266bdae29 # Dec 21 2021
 - profile-ingress.yaml 
-
+- service.yaml 
 patchesStrategicMerge:
   # - patch-admin.yaml
   - remove-namespace.yaml
-  - service.yaml 
+
 vars:
 - name: PROFILES_NAMESPACE
   fieldref:
