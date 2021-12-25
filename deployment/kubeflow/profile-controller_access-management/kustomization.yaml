@@ -6,9 +6,9 @@ resources:
 - profile-ingress.yaml 
 
 patchesStrategicMerge:
-- patches/kfam.yaml
-- patches/remove-namespace.yaml
-
+  - patch-admin.yaml
+  - remove-namespace.yaml
+  - service.yaml 
 vars:
 - name: PROFILES_NAMESPACE
   fieldref:
