@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/brainstain/argoflow.git
+    repoURL: https://github.com/brainstain/home_deploy.git
     targetRevision: HEAD
     path: deployment/kubeflow/jupyter-web-app
     kustomize:
