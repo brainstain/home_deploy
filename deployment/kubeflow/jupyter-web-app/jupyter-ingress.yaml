@@ -14,6 +14,18 @@ spec:
           port: 80
       middlewares:
         - name: kube-auth
+        - name: strip-jupyter
   tls:
     secretName: letsencrypt-prod-cert
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-jupyter
+  namespace: kubeflow
+spec:
+  stripPrefix:
+    prefixes:
+      - "/jupyter"
+    forceSlash: false
 # may need to add in header x-forwarded-prefix: /jupyter
