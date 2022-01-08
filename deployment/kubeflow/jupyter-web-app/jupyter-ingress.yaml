@@ -35,6 +35,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   name: jupyter-header
+  namespace: kubeflow
 spec:
   headers:
     customRequestHeaders:
