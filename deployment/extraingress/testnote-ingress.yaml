@@ -1,0 +1,17 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: testnote-https
+  namespace: kubeflow
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`kubeflow.michaelgoldstein.co`) && (PathPrefix(`/notebook/testf/testnote/`))
+      services:
+        - name: testnote
+          port: 80
+  tls:
+    secretName: letsencrypt-prod-cert
+---
