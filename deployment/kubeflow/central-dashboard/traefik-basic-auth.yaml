@@ -1,0 +1,18 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: kube-auth
+spec:
+  basicAuth:
+    secret: authsecret
+    headerField: kubeflow-userid
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: authsecret
+  namespace: kubeflow
+data:
+  users: |2
+    dGVzdDokYXByMSRINnVza2trVyRJZ1hMUDZld1RyU3VCa1RycUU4d2ovCnRlc3QyOiRhcHIxJGQ5
+    aHI5SEJCJDRIeHdnVWlyM0hQNEVzZ2dQL1FObzAK

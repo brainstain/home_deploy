@@ -12,6 +12,8 @@ spec:
       services:
         - name: jupyter-web-app-service
           port: 80
+      middlewares:
+        - name: kube-auth
   tls:
     secretName: letsencrypt-prod-cert
 # may need to add in header x-forwarded-prefix: /jupyter

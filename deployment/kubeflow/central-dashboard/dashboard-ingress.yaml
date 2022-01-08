@@ -12,5 +12,7 @@ spec:
       services:
         - name: centraldashboard
           port: 80
+      middlewares:
+        - name: kube-auth
   tls:
     secretName: letsencrypt-prod-cert

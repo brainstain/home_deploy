@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
 - github.com/kubeflow/kubeflow/components/centraldashboard/manifests/base?ref=07112341a4e06aa05890b7ba2348129266bdae29 # Dec 21 2021
 - dashboard-ingress.yaml
+- traefic-basic-auth.yaml
 patchesStrategicMerge:
 - enable-registration-flow.yaml
 
