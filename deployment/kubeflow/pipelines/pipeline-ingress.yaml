@@ -1,0 +1,18 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: pipeline-https
+  namespace: kubeflow
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`kubeflow.michaelgoldstein.co`) && (PathPrefix(`/pipeline`))
+      services:
+        - name: ml-pipeline-ui
+          port: 80
+      middlewares:
+        - name: kube-auth
+  tls:
+    secretName: letsencrypt-prod-cert
