@@ -66,5 +66,8 @@ spec:
                   name: pipeline-install-config
                   key: minioServiceHost
             - name: OBJECTSTORECONFIG_PORT
-              value: ""
+              valueFrom:
+                configMapKeyRef:
+                  name: pipeline-install-config
+                  key: minioServicePort
           name: ml-pipeline-api-server
