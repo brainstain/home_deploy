@@ -53,8 +53,6 @@ spec:
     spec:
       containers:
         - env:
-            - name: OBJECTSTORECONFIG_SECURE
-              value: "true"
             - name: OBJECTSTORECONFIG_BUCKETNAME
               valueFrom:
                 configMapKeyRef:
