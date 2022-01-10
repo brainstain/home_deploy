@@ -16,3 +16,22 @@ spec:
         - name: kube-auth
   tls:
     secretName: letsencrypt-prod-cert
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: metadata-https
+  namespace: kubeflow
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`kubeflow.michaelgoldstein.co`) && (PathPrefix(`/ml_metadata`))
+      services:
+        - name: metadata-envoy-service
+          port: 9090
+      middlewares:
+        - name: kube-auth
+  tls:
+    secretName: letsencrypt-prod-cert
