@@ -6,8 +6,8 @@ resources:
 - pipeline-ingress.yaml
 - mysql-secret.yaml
 
-# patchesStrategicMerge:
-# - mysqlPatch.yaml
+patchesStrategicMerge:
+- mysqlPatch.yaml
 # - configurations-patch.yaml 
 
 patches:
