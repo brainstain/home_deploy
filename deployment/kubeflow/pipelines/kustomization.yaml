@@ -9,6 +9,7 @@ resources:
 patchesStrategicMerge:
 - mysqlPatch.yaml
 - argo-config-patch.yaml 
+- ml-pipeline-ui-patch.yaml
 # - configurations-patch.yaml 
 
 patches:
