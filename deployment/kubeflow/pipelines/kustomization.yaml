@@ -3,6 +3,7 @@ kind: Kustomization
 
 resources:
 - github.com/kubeflow/manifests/apps/pipeline/upstream/env/platform-agnostic-multi-user?ref=b9526c9d935d111317789d56f7c57abc8fbe793c # Dec 21 2021
+- pipeline-ingress.yaml
 
 # patchesStrategicMerge:
 # - mysqlPatch.yaml
