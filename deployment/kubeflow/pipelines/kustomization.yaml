@@ -8,6 +8,7 @@ resources:
 
 patchesStrategicMerge:
 - mysqlPatch.yaml
+- argo-config-patch.yaml 
 # - configurations-patch.yaml 
 
 patches:

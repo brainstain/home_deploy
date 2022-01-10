@@ -1,0 +1,7 @@
+kind: ConfigMap
+metadata:
+  name: workflow-controller-configmap
+  namespace: kubeflow
+apiVersion: v1
+data:
+  containerRuntimeExecutor: emissary
