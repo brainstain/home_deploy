@@ -68,4 +68,6 @@ spec:
                 configMapKeyRef:
                   name: pipeline-install-config
                   key: minioServicePort
+            - name: OBJECTSTORECONFIG_REGION
+              value: "us-east-1"
           name: ml-pipeline-api-server
