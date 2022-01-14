@@ -47,14 +47,14 @@ spec:
         value: "12h"
       - name: promtail.extraScrapeConfigs[0].journal.labels.job
         value: "systemd-journal"
-      - name: promtail.extraScrapeConfigs[0].relabel_configs[0].source_labels
-        value: "['__journal__systemd_unit']"
+      - name: promtail.extraScrapeConfigs[0].relabel_configs[0].source_labels[0]
+        value: "__journal__systemd_unit"
       - name: promtail.extraScrapeConfigs[0].relabel_configs[0].target_label
         value: "unit"
-      - name: promtail.extraScrapeConfigs[0].relabel_configs[1].source_labels
-        value: "['__journal__hostname']"
+      - name: promtail.extraScrapeConfigs[0].relabel_configs[1].source_labels[0]
+        value: "__journal__hostname"
       - name: promtail.extraScrapeConfigs[0].relabel_configs[1].target_label
-        value: "['hostname']"
+        value: "hostname"
       - name: promtail.extraVolumes[0].name
         value: "journal"
       - name: promtail.extraVolumes[0].hostPath.path
