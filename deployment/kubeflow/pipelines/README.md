@@ -6,8 +6,8 @@ DB_PASSWORD=
 
 
 ```
-kubectl create secret generic -n kubeflow mysql-secrets \
+kubectl create secret generic -n kubeflow mysql-secret \
 --from-literal=username=${DB_USER} \
 --from-literal=password=${DB_PASSWORD} \
---dry-run=client -o yaml | kubeseal --scope namespace-wide | yq eval -P > mysql-secrets.yaml
+--dry-run=client -o yaml | kubeseal --scope namespace-wide | yq eval -P > mysql-secret.yaml
 ```
