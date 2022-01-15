@@ -37,8 +37,8 @@ spec:
   ignoreDifferences:
     - group: apps
       kind: Deployment
-      jsonPointers:
-      - /spec/template/metadata/annotations/kubectl.kubernetes.io/restartedAt
+      jqPathExpressions:
+      - .spec.template.metadata.annotations."kubectl.kubernetes.io/restartedAt"
   syncPolicy:
     automated:
       prune: true
