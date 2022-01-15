@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
 - argo-ingress.yaml
 - testnote-ingress.yaml 
+- octo-ingress.yaml
