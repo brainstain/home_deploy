@@ -34,12 +34,12 @@ spec:
   destination:
     server: https://kubernetes.default.svc
     namespace: monitor
+  ignoreDifferences:
+    - group: apps
+      kind: Deployment
+      jsonPointers:
+      - /spec/template/metadata/annotations
   syncPolicy:
-    ignoreDifferences:
-      - group: apps
-        kind: Deployment
-        jsonPointers:
-        - /spec/template/metadata/annotations
     automated:
       prune: true
       selfHeal: true
