@@ -13,7 +13,7 @@ resources:
 - argo-applications/argo-katib.yaml
 - argo-applications/argo-extraingress.yaml
 - argo-applications/argo-central-dashboard.yaml
-- argo-applications/argo-kubeflow-namespace.yaml
+# - argo-applications/argo-kubeflow-namespace.yaml
 - argo-applications/argo-kubeflow-profiles.yaml
 - argo-applications/argo-kubeflow-roles.yaml
 - argo-applications/argo-kubeflow-profile-controller.yaml 
