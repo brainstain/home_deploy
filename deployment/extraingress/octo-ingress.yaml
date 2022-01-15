@@ -19,6 +19,7 @@ apiVersion: v1
 kind: Service
 metadata:
     name: octo-ui
+    namespace: home
 spec:
     ports:
       - port: 80
@@ -29,6 +30,7 @@ apiVersion: v1
 kind: Endpoints
 metadata:
     name: octo-ui
+    namespace: home
 subsets:
     - addresses: 
        - ip: 192.168.1.214
