@@ -56,7 +56,7 @@ spec:
                   name: unifi-creds
                   key: password
             - name: UP_POLLER_DEBUG
-              value: "true"
+              value: "false"
             - name: UP_UNIFI_DEFAULT_SAVE_DPI	
               value: "true"
             - name: UP_INFLUXDB_DISABLE
