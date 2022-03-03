@@ -21,3 +21,5 @@ resources:
 - argo-applications/argo-kubeflow-jupyter.yaml 
 - argo-applications/argo-kubeflow-pipeline.yaml
 # - argo-applications/argocd.yaml
+- argo-applications/argo-postgres-operator.yaml
+- argo-applications/argo-postgres-operator-uy.yaml
