@@ -28,7 +28,7 @@ spec:
       - name: rasax.jwtSecret
         value: GseiROesOq9mpn2SqXSVC2qmQ1fDmn8wPDKrqyJzHKOPGEqNbkOv9Q7ZEVGGvUaBXGAS4lSWHzElFQv
       - name: rasax.resources
-        value: ""
+        value: "{}"
       - name: rasax.nodeSelector.beta\.kubernetes\.io/arch
         value: amd64
       - name: rasa.extraArgs[0]
@@ -42,11 +42,11 @@ spec:
       - name: rasa.versions.rasaProduction.nodeSelector.beta\.kubernetes\.io/arch
         value: amd64
       - name: rasa.versions.rasaProduction.resources
-        value: ""
+        value: "{}"
       - name: rasa.versions.rasaWorker.nodeSelector.beta\.kubernetes\.io/arch
         value: amd64
       - name: rasa.versions.rasaWorker.resources
-        value: ""
+        value: "{}"
       - name: separateDBMigrationService
         value: "false"
       - name: separateEventService
@@ -66,7 +66,7 @@ spec:
       - name: app.nodeSelector.beta\.kubernetes\.io/arch
         value: amd64
       - name: app.resources
-        value: ""
+        value: "{}"
       - name: app.name
         value: "rasa/rasa-x-demo"
       - name: app.tag
@@ -76,17 +76,17 @@ spec:
       - name: duckling.nodeSelector.beta\.kubernetes\.io/arch
         value: amd64
       - name: duckling.nodeSelector.resources
-        value: ""    
+        value: "{}"    
       - name: rabbitmq.rabbitmq.password
         value: "8wPDKrqyJzHKOPGE"
       - name: rabbitmq.nodeSelector.beta\.kubernetes\.io/arch
         value: amd64
       - name: rabbitmq.resources
-        value: ""        
+        value: "{}"        
       - name: redis.master.nodeSelector.beta\.kubernetes\.io/arch
         value: amd64
       - name: redis.resources
-        value: ""    
+        value: "{}"    
       - name: ingress.enabled
         value: "false"
       - name: images.pullPolicy
