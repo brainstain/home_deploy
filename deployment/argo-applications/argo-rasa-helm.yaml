@@ -1,0 +1,103 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rasa
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://rasahq.github.io/rasa-x-helm
+    targetRevision: 2.4.2
+    chart: rasa
+    helm: 
+     parameters:
+      - name: global.postgresql.postgresqlPassword
+        value: "8wPDKrqyJzHKOPGE"
+      - name: global.postgresql.existingSecret
+        value: "postgres.rasa-postgresql.credentials.postgresql.acid.zalan.do"
+      - name: global.redis.password
+        value: "8wPDKrqyJzHKOPGE"
+      - name: rasax.disableTelemetry
+        value: "true"
+      - name: rasax.initialUser.password
+        value: "vWZB4PZyH6k3*K"
+      - name: rasax.passwordSalt
+        value: GseiROesOq9mpn2SqXSVC2qmQ1fDmn8wPDKrqyJzHKOPGEqNbkOv9Q7ZEVGGvUaBXGAS4lSWHzElFQv
+      - name: rasax.token
+        value: GseiROesOq9mpn2SqXSVC2qmQ1fDmn8wPDKrqyJzHKOPGEqNbkOv9Q7ZEVGGvUaBXGAS4lSWHzElFQv
+      - name: rasax.jwtSecret
+        value: GseiROesOq9mpn2SqXSVC2qmQ1fDmn8wPDKrqyJzHKOPGEqNbkOv9Q7ZEVGGvUaBXGAS4lSWHzElFQv
+      - name: rasax.resources
+        value: "{}"
+      - name: rasax.nodeSelector."beta.kubernetes.io/arch"
+        value: amd64
+      - name: rasa.extraArgs[0]
+        value: "--enable-api"
+      - name: rasa.additionalChannelCredentials.rest
+        value: ""
+      - name: rasa.disableTelemetry
+        value: "true"
+      - name: rasa.token
+        value: GseiROesOq9mpn2SqXSVC2qmQ1fDmn8wPDKrqyJzHKOPGEqNbkOv9Q7ZEVGGvUaBXGAS4lSWHzElFQv
+      - name: rasa.versions.rasaProduction.nodeSelector."beta.kubernetes.io/arch"
+        value: amd64
+      - name: rasa.versions.rasaProduction.resources
+        value: "{}"
+      - name: rasa.versions.rasaWorker.nodeSelector."beta.kubernetes.io/arch"
+        value: amd64
+      - name: rasa.versions.rasaWorker.resources
+        value: "{}"
+      - name: separateDBMigrationService
+        value: "false"
+      - name: separateEventService
+        value: "false"
+      - name: postgresql.install
+        value: "false"
+      - name: postgresql.postgresqlPostgresPassword
+        value: ""
+      - name: postgresql.existingHost
+        value: "rasa-postgresql"
+      - name: postgresql.existingSecretKey
+        value: "password"
+      - name: app.install
+        value: "false"
+      - name: app.existingUrl
+        value: https://nodered.michaelgoldstein.co/webhook
+      - name: app.nodeSelector."beta.kubernetes.io/arch"
+        value: amd64
+      - name: app.resources
+        value: "{}"
+      - name: app.name
+        value: "rasa/rasa-x-demo"
+      - name: app.tag
+        value: "0.38.0"
+      - name: nginx.enabled
+        value: "false"
+      - name: duckling.nodeSelector."beta.kubernetes.io/arch"
+        value: amd64
+      - name: duckling.nodeSelector.resources
+        value: "{}"    
+      - name: rabbitmq.rabbitmq.password
+        value: "8wPDKrqyJzHKOPGE"
+      - name: rabbitmq.nodeSelector."beta.kubernetes.io/arch"
+        value: amd64
+      - name: rabbitmq.resources
+        value: "{}"        
+      - name: redis.master.nodeSelector."beta.kubernetes.io/arch"
+        value: amd64
+      - name: redis.resources
+        value: "{}"    
+      - name: ingress.enabled
+        value: "false"
+      - name: images.pullPolicy
+        value: IfNotPresent
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: rasa
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+

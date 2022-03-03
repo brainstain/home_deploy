@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: rasa
+  name: rasa-extra
   namespace: argocd
 spec:
   project: default
