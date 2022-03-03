@@ -39,7 +39,7 @@ spec:
         value: "true"
       - name: rasa.token
         value: GseiROesOq9mpn2SqXSVC2qmQ1fDmn8wPDKrqyJzHKOPGEqNbkOv9Q7ZEVGGvUaBXGAS4lSWHzElFQv
-      - name: rasa.versions.rasaProduction.nodeSelector."beta.kubernetes.io/arch"
+      - name: rasa.versions.rasaProduction.nodeSelector.beta\.kubernetes\.io/arch
         value: amd64
       - name: rasa.versions.rasaProduction.resources
         value: "{}"
