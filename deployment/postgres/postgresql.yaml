@@ -1,0 +1,32 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: rasa-postgresql
+  namespace: rasa
+spec:
+  teamId: "rasa"
+  volume:
+    size: 5Gi
+  numberOfInstances: 2
+  users:
+    postgres:  # database owner
+    - superuser
+    - createdb
+    frs_user: []  # role for application foo
+  databases:
+    rasa: postgres # dbname: owner
+  preparedDatabases:
+    rasa: {}
+  spiloRunAsUser: 101
+  spiloRunAsGroup: 103
+  spiloFSGroup: 103
+  postgresql:
+    version: "13"
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/arch
+              operator: In
+              values:
+                - amd64
