@@ -1,0 +1,50 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: rasa-x
+  namespace: rasa
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`rasa-x.michaelgoldstein.co`)
+      kind: Rule
+      services:
+        - name: rasa-x-rasa-x
+          port: 5002
+  tls:
+    secretName: letsencrypt-prod-cert
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: rasa
+  namespace: rasa
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`rasa.michaelgoldstein.co`)
+      kind: Rule
+      services:
+        - name: rasa-x-rasa-production
+          port: 5005
+  tls:
+    secretName: letsencrypt-prod-cert
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: rasa-worker
+  namespace: rasa
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`rasa-worker.michaelgoldstein.co`)
+      kind: Rule
+      services:
+        - name: rasa-x-rasa-worker
+          port: 5005
+  tls:
+    secretName: letsencrypt-prod-cert
