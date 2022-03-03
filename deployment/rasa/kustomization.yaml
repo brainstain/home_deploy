@@ -3,8 +3,3 @@ kind: Kustomization
 
 resources:
 - postgresql.yaml
-
-patches:
-- path: deploymentSelectorPatch.yaml
-  target:
-    kind: Deployment
