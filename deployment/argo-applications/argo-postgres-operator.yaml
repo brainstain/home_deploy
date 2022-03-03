@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/zalando/postgres-operator.git
-    targetRevision: v1.7.1
-    path: manifests
+    repoURL: https://github.com/brainstain/home_deploy.git
+    targetRevision: HEAD
+    path: deployment/postgres
     kustomize:
       version: v4.0.5
   destination:
