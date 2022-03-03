@@ -9,3 +9,4 @@ patches:
 - path: deploymentSelectorPatch.yaml
   target:
     kind: Deployment
+namespace: default
