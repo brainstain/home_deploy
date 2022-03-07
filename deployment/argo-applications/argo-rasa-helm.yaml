@@ -49,8 +49,8 @@ spec:
         value: "{}"
       - name: separateDBMigrationService
         value: "false"
-      - name: separateEventService
-        value: "false"
+      #- name: separateEventService
+      #  value: "false"
       - name: postgresql.install
         value: "false"
       - name: postgresql.postgresqlPostgresPassword
