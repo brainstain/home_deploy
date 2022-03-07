@@ -50,8 +50,8 @@ spec:
         value: ""
       - name: separateDBMigrationService
         value: "false"
-      - name: separateEventService
-        value: false
+      - name: eventService.nodeSelector.beta\.kubernetes\.io/arch
+        value: amd64
       - name: postgresql.install
         value: "false"
       - name: postgresql.postgresqlPostgresPassword
