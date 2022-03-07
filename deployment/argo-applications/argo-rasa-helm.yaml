@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: https://rasahq.github.io/rasa-x-helm
-    targetRevision: 2.4.2
+    targetRevision: 3.1.3
     chart: rasa-x
     helm: 
      releaseName: rasa-x
@@ -44,6 +44,8 @@ spec:
         value: amd64
       - name: rasa.versions.rasaProduction.resources
         value: ""
+      - name: rasa.versions.rasaProduction.enabled
+        value: "true"
       - name: rasa.versions.rasaWorker.nodeSelector.beta\.kubernetes\.io/arch
         value: amd64
       - name: rasa.versions.rasaWorker.resources
