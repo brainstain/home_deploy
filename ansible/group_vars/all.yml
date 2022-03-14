@@ -1,0 +1,4 @@
+---
+logrotate_conf_dir: "/etc/logrotate.d/"
+logrotate_scripts: []
+k3s_version: v1.21.8+k3s1 # v1.22.3+k3s1

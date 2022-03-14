@@ -1,0 +1,58 @@
+---
+- hosts: cluster
+  vars:
+    logrotate_scripts:
+      - name: rsyslog
+        paths:
+          - "/var/log/syslog"
+          - "/var/log/mail.info"
+          - "/var/log/mail.warn"
+          - "/var/log/mail.err"
+          - "/var/log/mail.log"
+          - "/var/log/daemon.log"
+          - "/var/log/kern.log"
+          - "/var/log/auth.log"
+          - "/var/log/user.log"
+          - "/var/log/lpr.log"
+          - "/var/log/cron.log"
+          - "/var/log/debug"
+          - "/var/log/messages"
+        options:
+          - rotate 0
+          - daily
+          - size 5M
+          - missingok
+          - notifempty
+          - compress
+          - delaycompress
+          - sharedscripts
+        scripts:
+            postrotate: /usr/lib/rsyslog/rsyslog-rotate
+      - name: log2ram
+        paths:
+          - /var/log/log2ram.log
+        options:
+          - rotate 0
+          - size 5M
+          - daily
+          - missingok
+          - notifempty
+          - delaycompress
+          - compress
+      - name: pods
+        paths:
+          - /var/log/pods/*/*/*.log
+        options:
+          - rotate 0
+          - size 1M
+          - daily
+          - missingok
+          - notifempty
+          - delaycompress
+          - compress
+  roles:
+    - logrotate
+    - k3s
+- hosts: arm
+  roles:
+    - log2ram
