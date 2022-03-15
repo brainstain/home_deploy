@@ -1,4 +1,7 @@
 ---
+- hosts: arm
+  roles:
+    - log2ram
 - hosts: cluster
   vars:
     logrotate_scripts:
@@ -52,7 +55,7 @@
           - compress
   roles:
     - logrotate
-    - k3s
-- hosts: arm
+    - k3s-prereq
+- hosts: master
   roles:
-    - log2ram
+    - k3s/master

@@ -1,6 +1,6 @@
 [master]
-master1
 master2
+master1
 
 [worker]
 node1
