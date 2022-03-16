@@ -1,4 +1,10 @@
 ---
 logrotate_conf_dir: "/etc/logrotate.d/"
 logrotate_scripts: []
-k3s_version: v1.21.8+k3s1 # v1.22.3+k3s1
+k3s_version: v1.22.7+k3s1 #v1.21.10+k3s1 #
+systemd_dir: /etc/systemd/system
+master_ip: "{{ hostvars[groups['master'][0]]['ansible_host'] | default(groups['master'][0]) }}"
+extra_server_args: '--resolv-conf /run/systemd/resolve/resolv.conf  --disable servicelb,local-storage,traefik'
+extra_agent_args: '--resolv-conf /run/systemd/resolve/resolv.conf'
+datastore_endpoint: ''
+token: ''
