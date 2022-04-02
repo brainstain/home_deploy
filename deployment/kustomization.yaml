@@ -24,3 +24,4 @@ resources:
 - argo-applications/argo-postgres-operator.yaml
 - argo-applications/argo-rasa.yaml
 - argo-applications/argo-rasa-helm.yaml
+- argo-applications/argo-cert-manager.yaml

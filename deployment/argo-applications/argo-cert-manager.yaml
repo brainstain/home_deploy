@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: certmanager
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://charts.jetstack.io
+    targetRevision: v1.1.0
+    chart: cert-manager
+    helm:
+      parameters: 
+      - name : installCRDs
+        value : "true"
+      - name: extraArgs[0]
+        value: --dns01-recursive-nameservers-only
+      - name: extraArgs[1]
+        value: --dns01-recursive-nameservers="8.8.8.8:53"
+      - name: extraArgs[2]
+        value: --cluster-resource-namespace=home
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: home
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
