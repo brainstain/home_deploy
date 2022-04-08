@@ -97,6 +97,10 @@ spec:
         value: "Exists"
       - name: prometheus.prometheusSpec.tolerations[0].effect
         value: "PreferNoSchedule"
+      - name: prometheus.prometheusSpec.additionalScrapeConfigs[0].metric_relabel_configs[0].regex
+        value: id
+      - name: prometheus.prometheusSpec.additionalScrapeConfigs[0].metric_relabel_configs[0].action
+        value: labeldrop
       - name: prometheusOperator.tolerations[0].key
         value: "arm64"
       - name: prometheusOperator.tolerations[0].operator
