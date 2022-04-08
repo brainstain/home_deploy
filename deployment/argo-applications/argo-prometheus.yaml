@@ -101,6 +101,8 @@ spec:
         value: id
       - name: prometheus.prometheusSpec.additionalScrapeConfigs[0].metric_relabel_configs[0].action
         value: labeldrop
+      - name: prometheus.prometheusSpec.additionalScrapeConfigs[0].metric_relabel_configs[0].job_name
+        value: all
       - name: prometheusOperator.tolerations[0].key
         value: "arm64"
       - name: prometheusOperator.tolerations[0].operator
