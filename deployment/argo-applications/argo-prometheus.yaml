@@ -87,10 +87,6 @@ spec:
         value: pod_name
       - name: kubelet.serviceMonitor.cAdvisorMetricRelabelings[1].action
         value: replace
-      - name: kubelet.serviceMonitor.cAdvisorMetricRelabelings[2].regex
-        value: "id"
-      - name: kubelet.serviceMonitor.cAdvisorMetricRelabelings[2].action
-        value: drop
       - name: prometheus.prometheusSpec.scrapeInterval
         value: 60s
       - name: prometheus.prometheusSpec.retention
