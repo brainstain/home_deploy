@@ -20,7 +20,7 @@ resources:
 - argo-applications/argo-kubeflow-notebook-controller.yaml
 - argo-applications/argo-kubeflow-jupyter.yaml 
 - argo-applications/argo-kubeflow-pipeline.yaml
-- argo-applications/argocd.yaml
+# - argo-applications/argocd.yaml
 - argo-applications/argo-postgres-operator.yaml
 - argo-applications/argo-rasa.yaml
 - argo-applications/argo-rasa-helm.yaml
