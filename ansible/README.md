@@ -11,3 +11,9 @@ export token='<existing token for cluster if applicable>'
 ```
 ansible-playbook -i hosts -e "datastore_endpoint=$datastore_endpoint token=$token" -b pbook.yaml
 ```
+
+
+##note
+add this:
+sudo rm -f /etc/resolv.conf
+sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf

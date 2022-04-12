@@ -71,6 +71,8 @@ spec:
         value: "false"
       - name: prometheus.prometheusSpec.ruleSelector
         value: ""
+      - name: prometheus.prometheusSpec.enableAdminAPI
+        value: "true"
       - name: kubelet.serviceMonitor.cAdvisorMetricRelabelings[0].sourceLabels[0]
         value: container
       - name: kubelet.serviceMonitor.cAdvisorMetricRelabelings[0].regex
@@ -90,13 +92,13 @@ spec:
       - name: prometheus.prometheusSpec.scrapeInterval
         value: 60s
       - name: prometheus.prometheusSpec.retention
-        value: 50d
-      - name: prometheus.prometheusSpec.tolerations[0].key
-        value: "arm64"
-      - name: prometheus.prometheusSpec.tolerations[0].operator
-        value: "Exists"
-      - name: prometheus.prometheusSpec.tolerations[0].effect
-        value: "PreferNoSchedule"
+        value: 32d
+      #- name: prometheus.prometheusSpec.tolerations[0].key
+      #  value: "arm64"
+      #- name: prometheus.prometheusSpec.tolerations[0].operator
+      #  value: "Exists"
+      #- name: prometheus.prometheusSpec.tolerations[0].effect
+      #  value: "PreferNoSchedule"
       - name: prometheus.prometheusSpec.additionalScrapeConfigs[0].metric_relabel_configs[0].regex
         value: id
       - name: prometheus.prometheusSpec.additionalScrapeConfigs[0].metric_relabel_configs[0].action
@@ -115,6 +117,14 @@ spec:
         value: "Exists"
       - name: alertmanager.alertmanagerSpec.tolerations[0].effect
         value: "PreferNoSchedule"
+      - name: kubeControllerManager.enabled
+        value: "false"
+      - name: kubeEtcd.enabled
+        value: "false"
+      - name: kubeScheduler.enabled
+        value: "false"
+      - name: kubeProxy.enabled
+        value: "false"
   destination:
     server: https://kubernetes.default.svc
     namespace: monitor
