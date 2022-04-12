@@ -10,3 +10,13 @@ patches:
   target:
     kind: Deployment
 namespace: default
+patchesStrategicMerge:
+  - |-
+    apiVersion: "networking.k8s.io/v1"
+    kind: "Ingress"
+    metadata:
+      name: "postgres-operator-ui"
+      namespace: "default"
+      labels:
+        application: "postgres-operator-ui"
+    $patch: delete
