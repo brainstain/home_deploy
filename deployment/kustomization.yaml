@@ -10,16 +10,7 @@ resources:
 - argo-applications/argo-monitoring.yaml
 - argo-applications/argo-dns.yaml
 - argo-applications/argo-metallb.yaml
-- argo-applications/argo-katib.yaml
 - argo-applications/argo-extraingress.yaml
-- argo-applications/argo-central-dashboard.yaml
-# - argo-applications/argo-kubeflow-namespace.yaml
-- argo-applications/argo-kubeflow-profiles.yaml
-- argo-applications/argo-kubeflow-roles.yaml
-- argo-applications/argo-kubeflow-profile-controller.yaml 
-- argo-applications/argo-kubeflow-notebook-controller.yaml
-- argo-applications/argo-kubeflow-jupyter.yaml 
-- argo-applications/argo-kubeflow-pipeline.yaml
 # - argo-applications/argocd.yaml
 - argo-applications/argo-postgres-operator.yaml
 - argo-applications/argo-rasa.yaml
