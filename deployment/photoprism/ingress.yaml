@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: photoprism-https
+  namespace: home
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`photos.michaelgoldstein.co`)
+      services:
+        - name: photoprism
+          port: 80
+  tls:
+    secretName: letsencrypt-prod-cert

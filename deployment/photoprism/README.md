@@ -1,0 +1,1 @@
+kubectl create secret generic -n home photoprism-secrets --from-literal=PHOTOPRISM_ADMIN_PASSWORD=${PHOTOPRISM_ADMIN_PASSWORD} --from-literal=PHOTOPRISM_DATABASE_DSN=${PHOTOPRISM_DATABASE_DSN} --dry-run=client -o yaml | kubeseal | yq eval -P > photoprism-secrets.yaml
