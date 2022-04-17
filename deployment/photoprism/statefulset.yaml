@@ -44,8 +44,7 @@ spec:
           name: http
         volumeMounts:
         - mountPath: /assets/photos/originals
-          name: originals
-          subPath: media/photos
+          name: originals 
         - mountPath: /assets/cache
           name: photoprism
           subPath: cache
