@@ -64,8 +64,8 @@ spec:
         nfs:
           path: /volume1/homes/michael/Photos
           readOnly: true
-          server: "192.168.13.12"
+          server: syn.michaelgoldstein.co
       - name: photoprism
         nfs:
           path: /volume1/pvc/photoprism
-          server: "192.168.13.12"
+          server: syn.michaelgoldstein.co
