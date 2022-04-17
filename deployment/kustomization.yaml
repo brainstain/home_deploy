@@ -16,3 +16,4 @@ resources:
 - argo-applications/argo-rasa.yaml
 - argo-applications/argo-rasa-helm.yaml
 - argo-applications/argo-cert-manager.yaml
+- argo-applications/argo-photoprism.yaml
