@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rasa-action-server
+  namespace: home
+  labels:
+    app: rasa-action-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rasa-action-server
+  template: 
+    metadata:
+      labels:
+        app: rasa-action-server
+    spec:
+      containers:
+        - name: rasa-action-server
+          image: ghcr.io/brainstain/rasa-action-server:main
+          imagePullPolicy: Always
+          ports: 
+            - containerPort: 8080
+              name: http
