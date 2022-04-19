@@ -11,7 +11,7 @@ resources:
 - argo-applications/argo-dns.yaml
 - argo-applications/argo-metallb.yaml
 - argo-applications/argo-extraingress.yaml
-# - argo-applications/argocd.yaml
+- argo-applications/argocd.yaml
 - argo-applications/argo-postgres-operator.yaml
 - argo-applications/argo-rasa.yaml
 - argo-applications/argo-rasa-helm.yaml
