@@ -34,6 +34,8 @@ spec:
           value: 0.0.0.0
         - name: PHOTOPRISM_HTTP_PORT
           value: "2342"
+        - name: PHOTOPRISM_WORKERS
+          value: "6"
         # Load database DSN & admin password from secret
         envFrom:
         - secretRef:
