@@ -19,3 +19,4 @@ resources:
 # - argo-applications/argo-photoprism.yaml
 - argo-applications/argo-rasa-action-server.yaml
 - argo-applications/argo-sealed-secrets.yaml
+- argo-applications/argo-home-assistant.yaml

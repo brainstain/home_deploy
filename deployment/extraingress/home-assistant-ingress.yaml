@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: home-assistant-https
+  namespace: home
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`ha2.michaelgoldstein.co`)
+      services:
+        - name: home-assistant
+          port: 80
+  tls:
+    secretName: letsencrypt-prod-cert

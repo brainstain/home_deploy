@@ -4,7 +4,6 @@ master1
 
 [worker]
 node2
-michael-desktop ansible_user=michael
 amdnode
 
 [arm]
@@ -12,8 +11,8 @@ master1
 master2
 node2
 
-[gpu]
-michael-desktop
+#[gpu]
+#michael-desktop
 
 [cluster:children]
 master
