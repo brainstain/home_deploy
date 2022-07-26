@@ -11,6 +11,6 @@ spec:
       match: Host(`ha2.michaelgoldstein.co`)
       services:
         - name: home-assistant
-          port: 8443
+          port: 8123
   tls:
     secretName: letsencrypt-prod-cert
