@@ -12,8 +12,13 @@ spec:
     helm: 
      releaseName: home-assistant
      parameters:
-     # - name: global.postgresql.postgresqlPassword
-     #   value: "8wPDKrqyJzHKOPGE"
+      - name: http.use_x_forwarded_for
+        value: "true"
+      - name: http.trusted_proxies[0]
+        value: "10.42.0.0/16"
+      - name: http.trusted_proxies[1]
+        value: "192.168.13.0/24"
+
   destination:
     server: https://kubernetes.default.svc
     namespace: home
