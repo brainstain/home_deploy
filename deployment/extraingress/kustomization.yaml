@@ -4,4 +4,3 @@ kind: Kustomization
 resources:
 - argo-ingress.yaml
 - octo-ingress.yaml
-- home-assistant-ingress.yaml
