@@ -10,7 +10,7 @@ spec:
   template: 
     metadata:
       annotations:
-        configHash: "3q4fds"
+        configHash: "3qfds"
     spec:
       tolerations:
       - key: "arm64"
