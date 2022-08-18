@@ -20,6 +20,6 @@ data:
     127.0.0.1 localhost
     192.168.13.12 syn.michaelgoldstein.co syn
     192.168.13.12 s3.michaelgoldstein.co s3
-    192.168.13.14 ha.michaelgoldstein.co ha
+    # 192.168.13.14 ha.michaelgoldstein.co ha
     192.168.1.126 ba.michaelgoldstein.co ba
     34.149.204.72 michaelgoldstein.co

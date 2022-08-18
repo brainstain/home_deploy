@@ -56,6 +56,7 @@
   roles:
     - logrotate
     - k3s-prereq
+    - system-update
 - hosts: master
   roles:
     - k3s/master

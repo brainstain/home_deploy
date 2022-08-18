@@ -6,26 +6,14 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://k8s-at-home.com/charts/
-    targetRevision: 13.3.0
-    chart: home-assistant
-    helm: 
-     releaseName: home-assistant
-     parameters:
-      - name: http.use_x_forwarded_for
-        value: "true"
-      - name: http.trusted_proxies[0]
-        value: "10.42.0.0/16"
-      - name: http.trusted_proxies[1]
-        value: "192.168.13.0/24"
-
+    repoURL: https://github.com/brainstain/home_deploy.git
+    targetRevision: HEAD
+    path: deployment/home-assistant
+    kustomize:
+      version: v4.0.5
   destination:
     server: https://kubernetes.default.svc
-    namespace: home
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    syncOptions:
-    - CreateNamespace=true
-
