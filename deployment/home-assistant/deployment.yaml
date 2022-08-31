@@ -28,6 +28,8 @@ spec:
           env:
             - name: TZ
               value: America/Chicago
+            - name: AIOHOMEKIT_TRANSPORT_COAP
+              value: "1"
           livenessProbe:
             tcpSocket:
               port: 8123
