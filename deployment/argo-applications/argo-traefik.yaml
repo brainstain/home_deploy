@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: traefik
+  name: home-traefik
   namespace: argocd
 spec:
   project: default
@@ -14,7 +14,7 @@ spec:
       - name : logs.access.enabled
         value : "true"
       - name: service.externalIPs[0]
-        value: "192.168.13.31"
+        value: "192.168.13.30"
   destination:
     server: https://kubernetes.default.svc
     namespace: home
