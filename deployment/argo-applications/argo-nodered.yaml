@@ -33,13 +33,15 @@ spec:
         value: "America/Chicago"
       - name: service.main.ports.http.port
         value: "1880"
-      - name: persistence.data.enabled.storageClass
+      - name: persistence.data.enabled
+        value: "true"
+      - name: persistence.data.storageClass
         value: "nfs-client"
-      - name: persistence.data.enabled.accessMode
+      - name: persistence.data.accessMode
         value: "ReadWriteOnce"
-      - name: persistence.data.enabled.size
+      - name: persistence.data.size
         value: "10Gi"
-      - name: persistence.data.enabled.skipuninstall
+      - name: persistence.data.skipuninstall
         value: "true"
   destination:
     server: https://kubernetes.default.svc
