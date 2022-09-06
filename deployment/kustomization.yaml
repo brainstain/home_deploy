@@ -20,3 +20,4 @@ resources:
 - argo-applications/argo-rasa-action-server.yaml
 - argo-applications/argo-sealed-secrets.yaml
 - argo-applications/argo-home-assistant.yaml
+- argo-applications/argo-traefik.yaml
