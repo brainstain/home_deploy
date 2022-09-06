@@ -1,0 +1,53 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: home-nodered
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL:  https://k8s-at-home.com/charts/
+    targetRevision: 8.1.0
+    chart: node-red
+    helm:
+      parameters: 
+      - name : probes.liveness.spec.initialDelaySeconds
+        value : "75"
+      - name : probes.readiness.spec.initialDelaySeconds
+        value : "75"
+      - name: strategyType
+        value: "Recreate"
+      - name: image.repository
+        value: "nodered/node-red"
+      - name: image.tag
+        value: "2.0.2"
+      - name: image.pullPolicy
+        value: "IfNotPresent"
+      - name: env.FLOWS
+        value: "flows.json"
+      - name: env.NODE_RED_ENABLE_SAFE_MODE
+        value: "false"
+      - name: env.NODE_RED_ENABLE_PROJECTS
+        value: "false"
+      - name: env.TZ
+        value: "America/Chicago"
+      - name: service.main.ports.http.port
+        value: "1880"
+      - name: persistence.data.enabled.storageClass
+        value: "nfs-client"
+      - name: persistence.data.enabled.accessMode
+        value: "ReadWriteOnce"
+      - name: persistence.data.enabled.size
+        value: "10Gi"
+      - name: persistence.data.enabled.skipuninstall
+        value: "true"
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: home
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+

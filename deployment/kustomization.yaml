@@ -21,3 +21,4 @@ resources:
 - argo-applications/argo-sealed-secrets.yaml
 - argo-applications/argo-home-assistant.yaml
 - argo-applications/argo-traefik.yaml
+- argo-applications/argo-nodered.yaml
