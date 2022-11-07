@@ -61,7 +61,7 @@ spec:
         - name: home-assistant-pvc
           nfs:
             path: /volume1/pvc/haconfig
-            server: syn.michaelgoldstein.co
+            server: 192.168.13.12
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
