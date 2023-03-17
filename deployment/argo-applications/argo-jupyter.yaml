@@ -14,6 +14,8 @@ spec:
      parameters:
       - name: ingress.enabled
         value: "false"
+      - name: singleuser.allowPrivilegeEscalation
+        value: "true"
       - name: images.pullPolicy
         value: IfNotPresent
   destination:
