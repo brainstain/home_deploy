@@ -18,6 +18,8 @@ spec:
         value: "true"
       - name: images.pullPolicy
         value: IfNotPresent
+      - name: singleuser.extraEnvVars.TEST
+        value: test
   destination:
     server: https://kubernetes.default.svc
     namespace: jupyter
