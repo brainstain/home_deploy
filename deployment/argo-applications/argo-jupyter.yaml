@@ -12,15 +12,15 @@ spec:
     helm: 
      releaseName: jupyterhub
      parameters:
-      - name: hub.nodeSelector
+      - name: hub.nodeSelector.beta\.kubernetes\.io/arch
         value: amd64
-      - name: proxy.chp.nodeSelector
+      - name: proxy.chp.nodeSelector.beta\.kubernetes\.io/arch
         value: amd64
-      - name: singleuser.nodeSelector
+      - name: singleuser.nodeSelector.beta\.kubernetes\.io/arch
         value: amd64
-      - name: scheduling.userScheduler.nodeSelector
+      - name: scheduling.userScheduler.nodeSelector.beta\.kubernetes\.io/arch
         value: amd64
-      - name: prePuller.hook.nodeSelector
+      - name: prePuller.hook.nodeSelector.beta\.kubernetes\.io/arch
         value: amd64
       - name: ingress.enabled
         value: "false"
