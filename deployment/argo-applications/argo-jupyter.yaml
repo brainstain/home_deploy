@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: rasa
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://jupyterhub.github.io/helm-chart/jupyterhub
+    targetRevision: 2.0.0
+    chart: jupyterhub
+    helm: 
+     releaseName: jupyterhub
+     parameters:
+      - name: hub.nodeSelector
+        value: amd64
+      - name: proxy.chp.nodeSelector
+        value: amd64
+      - name: singleuser.nodeSelector
+        value: amd64
+      - name: scheduling.userScheduler.nodeSelector
+        value: amd64
+      - name: prePuller.hook.nodeSelector
+        value: amd64
+      - name: ingress.enabled
+        value: "false"
+      - name: images.pullPolicy
+        value: IfNotPresent
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: jupyter
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+
