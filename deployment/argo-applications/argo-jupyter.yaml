@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://jupyterhub.github.io/helm-chart/jupyterhub
+    repoURL: https://jupyterhub.github.io/helm-chart/
     targetRevision: 2.0.0
     chart: jupyterhub
     helm: 
