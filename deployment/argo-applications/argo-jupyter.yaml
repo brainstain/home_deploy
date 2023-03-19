@@ -20,9 +20,9 @@ spec:
         value: "acid-jupyterhub-postgresql"
       - name: postgresql.enabled
         value: "false"
-      - name: externalDatabase.auth.username
+      - name: externalDatabase.username
         value: postgres
-      - name: externalDatabase.auth.password
+      - name: externalDatabase.password
         value: password
 
   destination:
