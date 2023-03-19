@@ -1,0 +1,32 @@
+apiVersion: "acid.zalan.do/v1"
+kind: postgresql
+metadata:
+  name: jupyter-postgresql
+  namespace: jupyter
+spec:
+  teamId: "jupyter"
+  volume:
+    size: 5Gi
+  numberOfInstances: 2
+  users:
+    postgres:  # database owner
+    - superuser
+    - createdb
+    frs_user: []  # role for application foo
+  databases:
+    jupyterhub: postgres # dbname: owner
+  preparedDatabases:
+    jupyterhub: {}
+  spiloRunAsUser: 101
+  spiloRunAsGroup: 103
+  spiloFSGroup: 103
+  postgresql:
+    version: "13"
+  nodeAffinity:
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: kubernetes.io/arch
+              operator: In
+              values:
+                - amd64

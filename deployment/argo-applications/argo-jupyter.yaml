@@ -16,6 +16,8 @@ spec:
         value: "false"
       - name: images.pullPolicy
         value: IfNotPresent
+      - name: externalDatabase.host
+        value: "jupyter-postgresql"
   destination:
     server: https://kubernetes.default.svc
     namespace: jupyter
