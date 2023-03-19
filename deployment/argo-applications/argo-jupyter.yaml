@@ -22,6 +22,8 @@ spec:
         value: "false"
       - name: postgresql.auth.username
         value: postgres
+      - name: postgresql.auth.password
+        value: password
 
   destination:
     server: https://kubernetes.default.svc
