@@ -1,27 +1,31 @@
-apiVersion: "acid.zalan.do/v1"
+apiVersion: acid.zalan.do/v1
 kind: postgresql
 metadata:
-  name: jupyter-postgresql
+  labels:
+    team: acid
+  name: acid-jupyterhub-postgresql
   namespace: jupyter
 spec:
-  teamId: "jupyter"
-  volume:
-    size: 5Gi
-  numberOfInstances: 2
-  users:
-    postgres:  # database owner
-    - superuser
-    - createdb
-    frs_user: []  # role for application foo
+  allowedSourceRanges: null
   databases:
-    jupyterhub: postgres # dbname: owner
-  preparedDatabases:
-    jupyterhub: {}
-  spiloRunAsUser: 101
-  spiloRunAsGroup: 103
-  spiloFSGroup: 103
+    jupyter: postgres
+  numberOfInstances: 2
   postgresql:
-    version: "13"
+    version: '14'
+  resources:
+    limits:
+      cpu: 500m
+      memory: 500Mi
+    requests:
+      cpu: 100m
+      memory: 100Mi
+  teamId: acid
+  users:
+    createdb: []
+    postgres: []
+    superuser: []
+  volume:
+    size: 10Gi
   nodeAffinity:
     requiredDuringSchedulingIgnoredDuringExecution:
       nodeSelectorTerms:
