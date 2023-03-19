@@ -4,7 +4,7 @@ kind: Kustomization
 resources:
 - github.com/zalando/postgres-operator/manifests?ref=v1.7.1
 - github.com/zalando/postgres-operator/ui/manifests?ref=v1.7.1
-- postgresql.yaml
+# - postgresql.yaml - namespace not working, likely due to this file's inclusion of default
 
 namespace: default
 patchesStrategicMerge:
