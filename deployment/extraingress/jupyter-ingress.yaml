@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: jupyter-https
+  namespace: jupyter
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`jupyter.michaelgoldstein.co`)
+      services:
+        - name: jupyterhub-proxy-public
+          port: 80
+  tls:
+    secretName: letsencrypt-prod-cert
