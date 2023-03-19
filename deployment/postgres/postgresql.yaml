@@ -1,10 +1,10 @@
 apiVersion: acid.zalan.do/v1
 kind: postgresql
 metadata:
+  namespace: jupyter
   labels:
     team: acid
   name: acid-jupyterhub-postgresql
-  namespace: jupyter
 spec:
   allowedSourceRanges: null
   databases:
