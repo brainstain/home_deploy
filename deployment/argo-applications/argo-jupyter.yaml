@@ -24,6 +24,8 @@ spec:
         value: postgres
       - name: externalDatabase.password
         value: password
+      - name: externalDatabase.database
+        value: jupyter
 
   destination:
     server: https://kubernetes.default.svc
