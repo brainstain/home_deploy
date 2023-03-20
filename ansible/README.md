@@ -1,5 +1,5 @@
 # Deploy a cluster with ansible
-1) setup the hardware and move an ssh key to each node.  details forthcoming
+1) setup the hardware and move an ssh key to each node.  details forthcoming (update hostname, move ssh key)
 2) setup the inventory file (hosts is an example)
 3) set local envs for the following:
 

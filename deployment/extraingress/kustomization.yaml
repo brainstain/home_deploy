@@ -5,3 +5,4 @@ resources:
 - argo-ingress.yaml
 - octo-ingress.yaml
 - jupyter-ingress.yaml
+- metallb-ip.yaml
