@@ -2,7 +2,7 @@
 # allowed to allocate. You can have as many
 # address pools as you want.
 apiVersion: metallb.io/v1beta1
-kind: IPAddressPool
+kind: L2Advertisement
 metadata:
   # A name for the address pool. Services can request allocation
   # from a specific address pool using this name.
