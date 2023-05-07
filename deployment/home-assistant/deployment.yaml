@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: home-assistant
-          image: homeassistant/home-assistant:2023.5.3
+          image: homeassistant/home-assistant:2023.5.2
           ports:
             - name: http
               containerPort: 8123
