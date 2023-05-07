@@ -33,7 +33,7 @@ spec:
     - name: mqtt
       protocol: TCP
       port: 1400
-      nodePort: 1400
+      targetPort: 1400
   selector:
     app.kubernetes.io/instance: home-assistant
     app.kubernetes.io/name: home-assistant
