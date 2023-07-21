@@ -23,7 +23,7 @@ spec:
           persistentVolumeClaim:
             claimName: piper
       containers:
-        - name: whisper
+        - name: piper
           image: rhasspy/wyoming-piper:1.1.0
           #imagePullPolicy: IfNotPresent
           args:
