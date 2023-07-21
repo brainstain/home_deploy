@@ -5,3 +5,5 @@ resources:
 - home-assistant-ingress.yaml
 - deployment.yaml
 - service.yaml
+- piper.yaml
+- whisper.yaml
