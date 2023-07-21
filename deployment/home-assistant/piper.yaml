@@ -1,0 +1,75 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: piper
+  namespace: home
+  labels:
+    app: whisper
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: piper
+  template:
+    metadata:
+      labels:
+        app: piper
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: piper
+      containers:
+        - name: whisper
+          image: rhasspy/wyoming-piper:1.1.0
+          #imagePullPolicy: IfNotPresent
+          args:
+            - --voice
+            - en-us-lessac-medium
+          env:
+            - name: TZ
+              value: America/Chicago
+          ports:
+            - containerPort: 10200
+              protocol: TCP
+              name: piper
+          volumeMounts:
+            - mountPath: /data
+              name: data
+          resources:
+            limits:
+              cpu: 12000m
+              memory: 2Gi
+            requests:
+              cpu: 100m
+              memory: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: piper
+  namespace: home
+spec:
+  selector:
+    app: piper
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 10200
+      targetPort: 10200
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: piper
+  namespace: home
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  volumeMode: Filesystem
