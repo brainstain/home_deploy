@@ -28,7 +28,7 @@ spec:
           #imagePullPolicy: IfNotPresent
           args:
             - --model
-            - small
+            - medium
             - --language
             - en
           env:
