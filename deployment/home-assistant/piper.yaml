@@ -24,7 +24,7 @@ spec:
             claimName: piper
       containers:
         - name: piper
-          image: rhasspy/wyoming-piper:0.0.2
+          image: rhasspy/wyoming-piper:1.1.0
           #imagePullPolicy: IfNotPresent
           args:
             - --voice
