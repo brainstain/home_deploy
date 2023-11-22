@@ -1,0 +1,77 @@
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: home
+  name: appdaemon
+  labels:
+    app: appdaemon
+spec:
+  type: ClusterIP
+  selector:
+    app: appdaemon
+  ports:
+    - name: http 
+      protocol: TCP
+      port: 5050
+      targetPort: 5050
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: appdaemon
+  namespace: home
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  volumeMode: Filesystem
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: home
+  name: appdaemon
+  labels:
+    app: appdaemon
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: appdaemon
+  template: 
+    metadata:
+      labels:
+        app: appdaemon
+      annotations:
+        configHash: "3"
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: appdaemon
+      tolerations:
+      - key: "arm64"
+        operator: "Exists"
+        effect: "PreferNoSchedule"
+      containers:
+        - name: appdaemon
+          image: acockburn/appdaemon:latest
+          imagePullPolicy: IfNotPresent
+          ports: 
+            - containerPort: 5050
+              name: http
+          volumeMounts:
+            - mountPath: /conf
+              name: data
+          env:
+            - name: HA_URL
+              value: "https://ha.michaelgoldstein.co"
+            - name: DASH_URL
+              value: "https://ha.michaelgoldstein.co:5050"
+            - name: TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: ha-creds
+                  key: password
