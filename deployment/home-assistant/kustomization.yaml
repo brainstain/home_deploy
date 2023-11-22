@@ -7,3 +7,4 @@ resources:
 - service.yaml
 - piper.yaml
 - whisper.yaml
+- appdaemon.yaml
