@@ -70,8 +70,6 @@ spec:
               value: "https://ha.michaelgoldstein.co"
             - name: DASH_URL
               value: "https://ha.michaelgoldstein.co:5050"
-            - name: PYTHONUNBUFFERED
-              value: "0"
             - name: TOKEN
               valueFrom:
                 secretKeyRef:
