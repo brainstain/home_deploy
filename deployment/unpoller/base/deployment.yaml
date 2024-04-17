@@ -40,7 +40,7 @@ spec:
         effect: "PreferNoSchedule"
       containers:
         - name: unpoller
-          image: golift/unifi-poller:latest
+          image: golift/unifi-poller:v2.11.1
           imagePullPolicy: IfNotPresent
           ports: 
             - containerPort: 9130
