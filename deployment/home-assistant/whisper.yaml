@@ -24,7 +24,7 @@ spec:
             claimName: whisper
       containers:
         - name: whisper
-          image: rhasspy/wyoming-whisper:2.0.0
+          image: rhasspy/wyoming-whisper:2.1.0
           #imagePullPolicy: IfNotPresent
           args:
             - --model
