@@ -28,7 +28,7 @@ spec:
           #imagePullPolicy: IfNotPresent
           args:
             - --voice
-            - en-us-lessac-medium
+            - en_US-lessac-medium
           env:
             - name: TZ
               value: America/Chicago
