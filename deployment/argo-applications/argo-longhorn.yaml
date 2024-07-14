@@ -5,7 +5,7 @@ metadata:
   namespace: argocd
 spec:
   project: default
-  sources:
+  source:
     - chart: longhorn
       repoURL: https://charts.longhorn.io/
       targetRevision: v1.6.2 # Replace with the Longhorn version you'd like to install or upgrade to
