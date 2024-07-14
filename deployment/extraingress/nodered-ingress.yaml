@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nodered-https
+  namespace: home
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`nodered.michaelgoldstein.co`)
+      services:
+        - name: home-nodered-node-red
+          port: 1880
+  tls:
+    secretName: letsencrypt-prod-cert

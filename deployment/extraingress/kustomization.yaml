@@ -6,3 +6,4 @@ resources:
 - octo-ingress.yaml
 - jupyter-ingress.yaml
 - metallb-ip.yaml
+- nodered-ingress.yaml
