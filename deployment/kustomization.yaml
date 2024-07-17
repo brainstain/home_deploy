@@ -13,11 +13,11 @@ resources:
 - argo-applications/argo-extraingress.yaml
 - argo-applications/argocd.yaml
 - argo-applications/argo-postgres-operator.yaml
-- argo-applications/argo-rasa.yaml
-- argo-applications/argo-rasa-helm.yaml
+# - argo-applications/argo-rasa.yaml
+# - argo-applications/argo-rasa-helm.yaml
 - argo-applications/argo-cert-manager.yaml
 # - argo-applications/argo-photoprism.yaml
-- argo-applications/argo-rasa-action-server.yaml
+# - argo-applications/argo-rasa-action-server.yaml
 - argo-applications/argo-sealed-secrets.yaml
 - argo-applications/argo-home-assistant.yaml
 - argo-applications/argo-traefik.yaml
