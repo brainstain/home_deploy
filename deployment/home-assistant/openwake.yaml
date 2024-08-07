@@ -65,11 +65,11 @@ spec:
     - protocol: TCP
       port: 10400
       targetPort: 10400
-      name: Web
+      name: web-http
     - protocol: UDP
       port: 10400
       targetPort: 10400
-      name: Udp
+      name: udp
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
