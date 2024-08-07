@@ -1,0 +1,83 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openwake
+  namespace: home
+  labels:
+    app: openwake
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: openwake
+  template:
+    metadata:
+      labels:
+        app: openwake
+    spec:
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: openwake
+      containers:
+        - name: openwake
+          image: rhasspy/wyoming-openwakeword:1.10.0
+          #imagePullPolicy: IfNotPresent
+          args:
+            - --preload-model
+            - hey_jarvis
+            - --custom-model-dir
+            - /data/custom
+          env:
+            - name: TZ
+              value: America/Chicago
+          ports:
+            - containerPort: 10400
+              protocol: TCP
+              name: openwake
+            - containerPort: 10400
+              protocol: UDP
+              name: openwakeudp
+          volumeMounts:
+            - mountPath: /data
+              name: data
+          resources:
+            limits:
+              cpu: 12000m
+              memory: 2Gi
+            requests:
+              cpu: 100m
+              memory: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: openwake
+  namespace: home
+spec:
+  selector:
+    app: openwake
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 10400
+      targetPort: 10400
+    - protocol: UDP
+      port: 10400
+      targetPort: 10400
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: openwake
+  namespace: home
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  volumeMode: Filesystem

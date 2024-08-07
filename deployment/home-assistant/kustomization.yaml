@@ -8,3 +8,4 @@ resources:
 - piper.yaml
 - whisper.yaml
 - appdaemon.yaml
+- openwake.yaml
