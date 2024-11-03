@@ -1,6 +1,7 @@
 [master]
 master2
 master1
+ubuntu-test ansible_user=michael
 
 [worker]
 node2
