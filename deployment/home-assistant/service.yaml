@@ -34,6 +34,10 @@ spec:
       protocol: TCP
       port: 1400
       targetPort: 1400
+    - name: https
+      protocol: TCP
+      port: 443
+      targetPort: 8123
   selector:
     app.kubernetes.io/instance: home-assistant
     app.kubernetes.io/name: home-assistant
